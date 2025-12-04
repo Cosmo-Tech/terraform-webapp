@@ -3,10 +3,17 @@ ingress:
 keycloak:
   realmUrl: "https://${CLUSTER_DOMAIN}/keycloak/realms/${NAMESPACE}"
 name: "${WEBAPP_NAME}"
-# powerbi:
-#   clientId: ""
-#   clientSecret: ""
-#   tenantId: ""
+powerbi:
+  tenantId: "${POWERBI_APP_TENANT_ID}"
+  clientId: "${POWERBI_APP_CLIENT_ID}"
+  clientSecret: "${POWERBI_APP_SECRET}"
+superset:
+  apiUrl: "http://superset-web.${NAMESPACE}.svc.cluster.local/api/v1"
+  superuser:
+    username: "admin"
+    password: "${SUPERSET_SUPERUSER_PASSWORD}"
+cosmotech:
+  apiUrl: "${COSMOTECH_API_URL}"
 tolerations:
 - key: "vendor"
   operator: "Equal"
@@ -27,25 +34,25 @@ webapp:
     image:
       pullPolicy: "Always"
       repository: "ghcr.io/cosmo-tech/azure-sample-webapp/webapp-functions"
-      # tag: latest
-    # tolerations:
-    # - key: "vendor"
-    #   operator: "Equal"
-    #   value: "cosmotech"
-    #   effect: "NoSchedule"
-    # nodeSelector:
-    #   "cosmotech.com/tier": "services"
+    # Tolerations for hybrid deployment (cloud + on-premises):
+    # On on-premises nodes, add a taint `vendor=tech:NoSchedule`
+    tolerations:
+    - key: "vendor"
+      operator: "Equal"
+      value: "cosmotech"
+      effect: "NoSchedule"
+    nodeSelector:
+      "cosmotech.com/tier": "services"
   publicUrl: "/${NAMESPACE}/${WEBAPP_NAME}"
   server:
     image:
       pullPolicy: Always
       repository: "ghcr.io/cosmo-tech/azure-sample-webapp/webapp-server"
-      # tag: latest
-    # tolerations:
-    # - key: "vendor"
-    #   operator: "Equal"
-    #   value: "cosmotech"
-    #   effect: "NoSchedule"
-    # nodeSelector:
-    #   "cosmotech.com/tier": "services"
+    tolerations:
+    - key: "vendor"
+      operator: "Equal"
+      value: "cosmotech"
+      effect: "NoSchedule"
+    nodeSelector:
+      "cosmotech.com/tier": "services"
     

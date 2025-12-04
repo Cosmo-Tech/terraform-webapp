@@ -1,5 +1,8 @@
-kubernetes_context = "aks-devops7hjyrn"
-cluster_domain     = "aks-devops.api.cosmotech.com"
-tenant             = "test5"
-webapp_name        = "webapp1"
-organization_id    = "o-5dl1ywx1greo"
+kubernetes_context    = "test"
+cluster_domain        = "test.dev.com"
+tenant                = "dev"
+webapp_name           = "webapp"
+organization_id       = "o-xxxxxxxxxxxxxxxx"
+azure_subscription_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxx"
+azure_entra_tenant_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxx"
+powerbi_app_deploy    = false

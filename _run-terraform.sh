@@ -6,7 +6,7 @@
 
 
 # Stop script if missing dependency
-required_commands="terraform aws jq"
+required_commands="terraform"
 for command in $required_commands; do
 	if [ -z "$(command -v $command)" ]; then
 		echo "error: required command not found: \e[91m$command\e[97m"
@@ -24,18 +24,19 @@ get_var_value() {
     cat $file | grep '=' | grep -w $variable | sed 's|.*"\(.*\)".*|\1|' | head -n 1
 }
 
-tenant_name="$(get_var_value terraform-webapp/terraform.tfvars tenant)"
-webapp_name="$(get_var_value terraform-webapp/terraform.tfvars webapp_name)"
+tenant_name="$(get_var_value terraform.tfvars tenant)"
+webapp_name="$(get_var_value terraform.tfvars webapp_name)"
 state_file_name="tfstate-tenant-$tenant_name-webapp-$webapp_name"
 
 # Clear old data
-rm -rf terraform-webapp/.terraform*
-rm -rf terraform-webapp/terraform.tfstate*
+rm -rf .terraform*
+rm -rf terraform.tfstate*
 
 # Deploy
-terraform -chdir=terraform-webapp init -upgrade -backend-config="key=$state_file_name" 
-terraform -chdir=terraform-webapp plan -out .terraform.plan
-terraform -chdir=terraform-webapp apply .terraform.plan
+terraform fmt -recursive
+terraform init -upgrade -backend-config="key=$state_file_name" 
+terraform plan -out .terraform.plan
+terraform apply .terraform.plan
 
 
 exit
