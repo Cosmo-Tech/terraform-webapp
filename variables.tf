@@ -43,3 +43,9 @@ variable "azure_subscription_id" {
   description = "Azure subscription ID"
   type        = string
 }
+
+variable "cloud_provider" {
+  description = "Cloud provider name where the deployment takes place"
+  type        = string
+  default = "azure"
+}

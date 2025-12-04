@@ -1,3 +1,4 @@
+cloud_provider        = "azure"
 kubernetes_context    = "test"
 cluster_domain        = "test.dev.com"
 tenant                = "dev"
