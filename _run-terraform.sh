@@ -33,7 +33,6 @@ cloud_provider="$(get_var_value terraform.tfvars cloud_provider)"
 rm -rf .terraform*
 rm -rf terraform.tfstate*
 
-
 # The trick here is to write configuration in a dynamic file created at the begin of the
 # execution, containing the config that the concerned provider is waiting for Terraform backend.
 # Then, Terraform will automatically detects it from its .tf extension.
@@ -69,9 +68,8 @@ esac
 
 # Deploy
 terraform fmt -recursive $backend_file
-terraform init -upgrade -reconfigure   
+terraform init -upgrade -reconfigure
 terraform plan -out .terraform.plan
-terraform apply .terraform.plan
-
+# terraform apply .terraform.plan
 
 exit

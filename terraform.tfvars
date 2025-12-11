@@ -1,9 +1,9 @@
 cloud_provider        = "azure"
-kubernetes_context    = "test"
+cluster_name          = "test"
 cluster_domain        = "test.dev.com"
 tenant                = "dev"
 webapp_name           = "webapp"
 organization_id       = "o-xxxxxxxxxxxxxxxx"
-azure_subscription_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxx"
-azure_entra_tenant_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxx"
+azure_subscription_id = "xxxxxxxx_xxxx_xxxx_xxxx_xxxxxxxxxxxx"
+azure_entra_tenant_id = "xxxxxxxx_xxxx_xxxx_xxxx_xxxxxxxxxxxx"
 powerbi_app_deploy    = false
