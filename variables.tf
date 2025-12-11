@@ -3,8 +3,8 @@ locals {
   tenant      = "tenant-${var.tenant}"
 }
 
-variable "kubernetes_context" {
-  description = "Kubernetes context (= the cluster) where to perform installation"
+variable "cluster_name" {
+  description = "Kubernetes cluster where to perform installation (must be one of the clusters (=/= context) in your kubectl config)"
   type        = string
 }
 
@@ -37,5 +37,5 @@ variable "powerbi_app_deploy" {
 variable "cloud_provider" {
   description = "Cloud provider name where the deployment takes place"
   type        = string
-  default = "azure"
+  default     = "azure"
 }

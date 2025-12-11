@@ -1,5 +1,5 @@
 cloud_provider        = "azure"
-kubernetes_context    = "test"
+cluster_name          = "test"
 cluster_domain        = "test.dev.com"
 tenant                = "dev"
 webapp_name           = "webapp"
