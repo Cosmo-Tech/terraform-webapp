@@ -22,18 +22,6 @@
     ```
 * **Deploy**
     * Fill `terraform-cluster/terraform.tfvars` variables according to your needs<br>
-    ```hcl
-    # Example 
-    cloud_provider        = "azure"
-    kubernetes_context    = "aks-dev-devops"
-    cluster_domain        = "aks-dev-devops.azure.platform.cosmotech.com"
-    tenant                = "test"
-    webapp_name           = "business"
-    organization_id       = "o-xxxxxxxx"
-    azure_subscription_id = "xxxxxxxx_xxxx_xxxx_xxxx_xxxxxxxxxxxx"
-    azure_entra_tenant_id = "xxxxxxxx_xxxx_xxxx_xxxx_xxxxxxxxxxxx"
-    powerbi_app_deploy    = false
-    ```
     * run pre-configured script
         > ℹ️ comment/uncomment the terraform apply line at the end to get a plan without deploy anything
         * **Linux**
