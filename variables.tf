@@ -34,16 +34,6 @@ variable "powerbi_app_deploy" {
   default     = false
 }
 
-variable "azure_entra_tenant_id" {
-  description = "Azure Entra tenant ID"
-  type        = string
-}
-
-variable "azure_subscription_id" {
-  description = "Azure subscription ID"
-  type        = string
-}
-
 variable "cloud_provider" {
   description = "Cloud provider name where the deployment takes place"
   type        = string
