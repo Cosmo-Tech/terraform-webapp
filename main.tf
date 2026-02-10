@@ -32,12 +32,4 @@ module "chart-cosmotech-webapp" {
   ]
 }
 
-# ## Superset
-# module "chart-superset" {
-#   source = "./modules/chart-superset"
-
-#   release = "${local.webapp_name}-superset"
-#   tenant  = var.tenant
-# }
-
 
