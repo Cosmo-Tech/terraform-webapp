@@ -60,3 +60,20 @@ resource "keycloak_generic_protocol_mapper" "realm_roles_mapper" {
     "introspection.token.claim" : "true"
   }
 }
+
+resource "keycloak_generic_protocol_mapper" "realm_roles_mapper_groups" {
+  realm_id        = var.tenant
+  client_id       = keycloak_openid_client.webapp.id
+  name            = "groups"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-usermodel-realm-role-mapper"
+  config = {
+    "id.token.claim" : "true",
+    "access.token.claim" : "true",
+    "claim.name" : "groups",
+    "jsonType.label" : "String",
+    "multivalued" : "true",
+    "userinfo.token.claim" : "true",
+    "introspection.token.claim" : "true"
+  }
+}
