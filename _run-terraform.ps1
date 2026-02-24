@@ -65,7 +65,7 @@ switch ($cloud_provider) {
 terraform fmt $backend_file
 terraform init -lock=false -upgrade -reconfigure
 terraform plan -lock=false -out .terraform.plan
-terraform apply -lock=false .terraform.plan
+# terraform apply -lock=false .terraform.plan
 
 echo ''
 exit 0
