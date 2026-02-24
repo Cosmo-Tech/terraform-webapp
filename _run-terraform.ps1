@@ -22,7 +22,8 @@ function get_var_value {
 }
 $tenant_name = (get_var_value terraform.tfvars tenant)
 $webapp_name = (get_var_value terraform.tfvars webapp_name)
-$state_file_name = "tfstate-tenant-$tenant_name-webapp-$webapp_name"
+$cluster_name = (get_var_value terraform.tfvars cluster_name)
+$state_file_name = "tfstate-$cluster_name-tenant-$tenant_name-webapp-$webapp_name"
 $cloud_provider = (get_var_value terraform.tfvars cloud_provider)
 
 # Clear old data

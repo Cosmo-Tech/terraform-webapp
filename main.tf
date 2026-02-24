@@ -12,7 +12,7 @@ module "chart-keycloak-client" {
   source = "./modules/config-keycloak-client"
 
   cluster_domain = var.cluster_domain
-  tenant         = var.tenant
+  tenant         = local.tenant
   webapp_name    = local.webapp_name
 }
 
