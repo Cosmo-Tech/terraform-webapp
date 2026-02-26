@@ -30,12 +30,8 @@ resource "kubernetes_config_map" "webapp" {
 
 data "kubernetes_secret" "superset" {
   metadata {
-    name = "superset"
-    # Here I use the same Kubernetes namespace, but before the release of Superset 6
-    # I think we have two options:
-    # - We can deploy superset in each namespace
-    # - After the release 6, it will be centralized in the cluster
-    namespace = var.tenant
+    name      = "superset"
+    namespace = "superset"
   }
 }
 
