@@ -8,7 +8,7 @@ powerbi:
   clientId: "${POWERBI_APP_CLIENT_ID}"
   clientSecret: "${POWERBI_APP_SECRET}"
 superset:
-  apiUrl: "http://superset-web.${NAMESPACE}.svc.cluster.local/api/v1"
+  apiUrl: "http://superset-web.superset.svc.cluster.local/api/v1"
   superuser:
     username: "admin"
     password: "${SUPERSET_SUPERUSER_PASSWORD}"
