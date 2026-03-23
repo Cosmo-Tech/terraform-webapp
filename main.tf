@@ -1,3 +1,7 @@
+locals {
+  cluster_domain     = "${var.cluster_name}.${var.domain_zone}"
+}
+
 ## Cosmo Tech powerBi app registrations (optional
 module "deploy-powerbi-app" {
   source = "./modules/deploy-powerbi-app"
@@ -11,7 +15,7 @@ module "deploy-powerbi-app" {
 module "chart-keycloak-client" {
   source = "./modules/config-keycloak-client"
 
-  cluster_domain = var.cluster_domain
+  cluster_domain = local.cluster_domain
   tenant         = local.tenant
   webapp_name    = local.webapp_name
 }
@@ -22,7 +26,7 @@ module "chart-cosmotech-webapp" {
 
   webapp_name           = local.webapp_name
   tenant                = local.tenant
-  cluster_domain        = var.cluster_domain
+  cluster_domain        = local.cluster_domain
   organization_id       = var.organization_id
   powerbi_app_deploy    = var.powerbi_app_deploy
   azure_entra_tenant_id = var.azure_entra_tenant_id

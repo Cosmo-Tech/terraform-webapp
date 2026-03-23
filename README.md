@@ -32,14 +32,20 @@
             ```powershell
             ./_run-terraform.ps1
             ```
-    * Azure
-        * will ask for the access key of the Azure Storage of "cosmotechstates"
-            * go to Azure > Azure Storage > "cosmotechstates" > Access keys
-            * copy/paste "Key" from "key1" or "key2" in the terraform input
-    * AWS
-        * Not yet implemented 
-    * GCP
-        * Not yet implemented
+    * Backend target notes
+        * **Azure**
+            * The run script generates a `target.tf` file from `targets/azure.target.tf`
+            * Terraform uses the `azurerm` backend for the remote state
+        * **KOB / On-premise**
+            * The run script generates a `target.tf` file from `targets/kob.target.tf`
+            * Set `state_host` in `terraform.tfvars`
+            * Export backend credentials before running Terraform:
+                * `TF_HTTP_USERNAME`
+                * `TF_HTTP_PASSWORD`
+        * **AWS**
+            * Not yet implemented
+        * **GCP**
+            * Not yet implemented
 
 ## Developpers
 * modules

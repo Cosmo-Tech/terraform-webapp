@@ -18,8 +18,8 @@ variable "webapp_name" {
   type        = string
 }
 
-variable "cluster_domain" {
-  description = "[temporary] Cluster domain"
+variable "domain_zone" {
+  description = "Domain zone (e.g. 'azure.platform.cosmotech.com' for AKS or 'onpremise.platform.cosmotech.com' for KOB)"
   type        = string
 }
 
