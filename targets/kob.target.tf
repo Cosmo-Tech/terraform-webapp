@@ -12,3 +12,7 @@ terraform {
 }
 
 variable "state_host" { type = string }
+variable "azure_entra_tenant_id" {
+  type        = string
+  description = "Azure Entra tenant ID used to configure Power BI app registration for the webapp."
+}

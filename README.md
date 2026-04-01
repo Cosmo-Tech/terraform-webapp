@@ -38,10 +38,19 @@
             * Terraform uses the `azurerm` backend for the remote state
         * **KOB / On-premise**
             * The run script generates a `target.tf` file from `targets/kob.target.tf`
-            * Set `state_host` in `terraform.tfvars`
-            * Export backend credentials before running Terraform:
-                * `TF_HTTP_USERNAME`
-                * `TF_HTTP_PASSWORD`
+                * Set `state_host` in `terraform.tfvars`
+                * Before running Terraform, export the HTTP backend credentials as environment variables:
+                    * Linux:
+                        ```bash
+                        export TF_HTTP_USERNAME="your-username"
+                        export TF_HTTP_PASSWORD="your-password"
+                        ```
+                    * Windows (PowerShell):
+                        ```powershell
+                        $env:TF_HTTP_USERNAME = "your-username"
+                        $env:TF_HTTP_PASSWORD = "your-password"
+                        ```
+                * If you don't have the credentials, request them from the DevOps team.
         * **AWS**
             * Not yet implemented
         * **GCP**
