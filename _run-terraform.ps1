@@ -83,7 +83,7 @@ switch ([string]$cloud_provider) {
             echo "found TF_HTTP_USERNAME & TF_HTTP_PASSWORD"
         }
 
-        $env:TF_CLI_ARGS += ';-lock=false'
+        $env:TF_CLI_ARGS_apply += ';-lock=false'
 
         prepare_target_file "targets/$cloud_provider.target.tf" $target_file
     }

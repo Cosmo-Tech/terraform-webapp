@@ -86,7 +86,7 @@ case "$(echo $cloud_provider)" in
         echo "found TF_HTTP_USERNAME & TF_HTTP_PASSWORD"
     fi
 
-    export TF_CLI_ARGS="-lock=false"
+    export TF_CLI_ARGS_apply="-lock=false"
 
     prepare_target_file "targets/$cloud_provider.target.tf" $target_file
     ;;
