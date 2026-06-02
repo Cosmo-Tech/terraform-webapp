@@ -17,5 +17,5 @@
 # tenant                 = "test0"
 # webapp_name            = "business"
 # organization_id        = "o-xxxxxxxxxxxx"
-# azure_entra_tenant_id = "xxxxxxxx_xxxx_xxxx_xxxx_xxxxxxxxxxxx"
+# azure_entra_tenant_id  = "xxxxxxxx_xxxx_xxxx_xxxx_xxxxxxxxxxxx"
 # state_host             = "https://cosmotechstates.onpremise.platform.cosmotech.com"
