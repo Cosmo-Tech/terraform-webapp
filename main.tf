@@ -9,7 +9,7 @@ locals {
 module "deploy-powerbi-app" {
   source = "./modules/deploy-powerbi-app"
 
-  count       = var.powerbi_app_deploy ? 1 : 0
+  count = var.powerbi_app_deploy ? 1 : 0
 
   tenant      = local.tenant
   webapp_name = local.webapp_name
@@ -36,8 +36,8 @@ module "chart-cosmotech-webapp" {
   chart_name       = var.cosmotechwebapp_chart_name
   chart_tag        = var.cosmotechwebapp_chart_tag
   # chart_release    = local.webapp_name
-  webapp_name    = local.webapp_name
-  image_tag        = var.cosmotechwebapp_image_tag
+  webapp_name = local.webapp_name
+  image_tag   = var.cosmotechwebapp_image_tag
 
   cluster_domain        = local.cluster_domain
   organization_id       = var.organization_id
