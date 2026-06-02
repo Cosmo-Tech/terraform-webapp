@@ -10,8 +10,9 @@ module "deploy-powerbi-app" {
   source = "./modules/deploy-powerbi-app"
 
   count       = var.powerbi_app_deploy ? 1 : 0
-  webapp_name = local.webapp_name
+
   tenant      = local.tenant
+  webapp_name = local.webapp_name
 }
 
 
@@ -34,12 +35,12 @@ module "chart-cosmotech-webapp" {
   chart_repository = var.cosmotechwebapp_chart_repository
   chart_name       = var.cosmotechwebapp_chart_name
   chart_tag        = var.cosmotechwebapp_chart_tag
-  chart_release    = local.webapp_name
+  # chart_release    = local.webapp_name
+  webapp_name    = local.webapp_name
   image_tag        = var.cosmotechwebapp_image_tag
 
   cluster_domain        = local.cluster_domain
   organization_id       = var.organization_id
-  powerbi_app_deploy    = var.powerbi_app_deploy
   azure_entra_tenant_id = var.azure_entra_tenant_id
 
   depends_on = [

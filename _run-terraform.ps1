@@ -122,7 +122,7 @@ if ($args[0] -eq $option_apply) {
 
 $tenant_name = "tenant-$(get_var_value terraform.tfvars tenant)"
 echo ''
-echo "target is $cluster_name/$tenant_name"
+echo "target is $cluster_name/$tenant_name/webapp-$webapp_name"
 
 
 echo ''

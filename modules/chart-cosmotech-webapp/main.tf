@@ -5,7 +5,7 @@ locals {
   chart_values_file = templatefile("${path.module}/values.yaml", local.chart_values)
   chart_values = {
     CLUSTER_DOMAIN              = var.cluster_domain
-    WEBAPP_NAME                 = helm_release.webapp.name
+    WEBAPP_NAME                 = var.webapp_name
     NAMESPACE                   = var.tenant
     ORGANIZATION_ID             = var.organization_id
     SUPERSET_SUPERUSER_PASSWORD = try(data.kubernetes_secret.superset.data["superset-password"], "")
@@ -21,7 +21,7 @@ locals {
 resource "kubernetes_config_map" "webapp" {
   metadata {
     namespace = var.tenant
-    name      = "${helm_release.webapp.name}-server-configmap-config"
+    name      = "${var.webapp_name}-server-configmap-config"
   }
 
   data = {
@@ -40,14 +40,14 @@ data "kubernetes_secret" "superset" {
 
 data "kubernetes_secret" "powerbi" {
   metadata {
-    name      = "${helm_release.webapp.name}-powerbi-client"
+    name      = "${var.webapp_name}-powerbi-client"
     namespace = var.tenant
   }
 }
 
 resource "helm_release" "webapp" {
   namespace  = var.tenant
-  name       = var.chart_release
+  name       = var.webapp_name
   repository = var.chart_repository
   chart      = var.chart_name
   version    = var.chart_tag
@@ -83,6 +83,6 @@ resource "terraform_data" "helm_release_trigger" {
 data "kubernetes_resources" "helm_release_secret" {
   api_version    = "v1"
   kind           = "Secret"
-  label_selector = "owner=helm,name=${var.chart_release}"
+  label_selector = "owner=helm,name=${var.webapp_name}"
 }
 

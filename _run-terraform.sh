@@ -127,7 +127,7 @@ fi
 
 
 echo "$NO_FORMAT"
-echo "target is $FG_COLOR_INFO$cluster_name/$tenant_name/$webapp_name"
+echo "target is $FG_COLOR_INFO$cluster_name/$tenant_name/webapp-$webapp_name"
 
 
 echo "$NO_FORMAT"
