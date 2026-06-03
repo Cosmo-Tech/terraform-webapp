@@ -67,7 +67,7 @@ resource "helm_release" "webapp" {
   }
 
   depends_on = [
-    var.tenant,
+    kubernetes_config_map.webapp,
   ]
 }
 
