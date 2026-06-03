@@ -5,12 +5,18 @@
 # - ./script.sh
 
 
+# Colors
+NO_FORMAT="\033[0m"
+FG_COLOR_INFO="\033[38;5;141m"
+FG_COLOR_WARN="\033[38;5;203m"
+
+
 # Stop script if missing dependency
 required_commands="terraform"
 for command in $required_commands; do
 	if [ -z "$(command -v $command)" ]; then
 		echo "error: required command not found: \e[91m$command\e[97m"
-        exit 1
+        exit
 	fi
 done
 
@@ -23,19 +29,11 @@ get_var_value() {
 
     cat $file | grep '=' | grep -w $variable | sed '/.*#.*/d' | sed 's|.*=.*"\(.*\)".*|\1|' | head -n 1
 }
-
 cloud_provider="$(get_var_value terraform.tfvars cloud_provider)"
 cluster_name="$(get_var_value terraform.tfvars cluster_name)"
 tenant_name="$(get_var_value terraform.tfvars tenant)"
 webapp_name="$(get_var_value terraform.tfvars webapp_name)"
 state_file_name="tfstate-$cluster_name-tenant-$tenant_name-webapp-$webapp_name"
-
-# Generate state_storage_name for Azure backend
-# Azure storage account names must be 3-24 chars, lowercase alphanumeric only
-azure_subscription_id="$(get_var_value terraform.tfvars azure_subscription_id)"
-sub_hash="$(echo -n "$azure_subscription_id" | sha256sum | cut -c1-9)"
-state_storage_name="csmstates${sub_hash}"
-
 
 
 # Clear old data
@@ -71,6 +69,19 @@ target_file='target.tf'
 # Then, Terraform will automatically detects it from its .tf extension.
 case "$(echo $cloud_provider)" in
   'azure')
+    # Azure storage account names must be 3-24 chars, lowercase alphanumeric only
+    azure_subscription_id="$(get_var_value terraform.tfvars azure_subscription_id)"
+    sub_hash="$(echo -n "$azure_subscription_id" | sha256sum | cut -c1-9)"
+    state_storage_name="csmstates${sub_hash}"
+
+    prepare_target_file "targets/$cloud_provider.target.tf" $target_file
+    ;;
+
+  'aws')
+    prepare_target_file "targets/$cloud_provider.target.tf" $target_file
+    ;;
+
+  'gcp')
     prepare_target_file "targets/$cloud_provider.target.tf" $target_file
     ;;
 
@@ -86,13 +97,13 @@ case "$(echo $cloud_provider)" in
         echo "found TF_HTTP_USERNAME & TF_HTTP_PASSWORD"
     fi
 
-    export TF_CLI_ARGS_apply="-lock=false"
+    export TF_CLI_ARGS="-lock=false"
 
     prepare_target_file "targets/$cloud_provider.target.tf" $target_file
     ;;
 
   *)
-    echo "error: unknown or empty \e[91mcloud_provider\e[0m from terraform.tfvars"
+    echo "error: unknown or empty $FG_COLOR_WARN'cloud_provider'$NO_FORMAT from terraform.tfvars"
     exit
     ;;
 esac
@@ -104,4 +115,20 @@ terraform init -upgrade -reconfigure
 terraform plan -out .terraform.plan
 # terraform apply .terraform.plan
 
+option_apply='--apply'
+if [ "$(echo $1)" = "$option_apply" ]; then
+  terraform apply .terraform.plan
+else
+  echo "$NO_FORMAT"
+  echo 'Terraform plan can be applied with:'
+  echo "$FG_COLOR_INFO  $0 $option_apply"
+fi
+
+
+
+echo "$NO_FORMAT"
+echo "target is $FG_COLOR_INFO$cluster_name/$tenant_name/webapp-$webapp_name"
+
+
+echo "$NO_FORMAT"
 exit

@@ -1,8 +1,3 @@
-locals {
-  webapp_name = "webapp-${var.webapp_name}"
-  tenant      = "tenant-${var.tenant}"
-}
-
 variable "cluster_name" {
   description = "Kubernetes cluster where to perform installation (must be one of the clusters (=/= context) in your kubectl config)"
   type        = string
