@@ -37,6 +37,7 @@ module "chart-cosmotech-webapp" {
   chart_tag        = var.cosmotechwebapp_chart_tag
   # chart_release    = local.webapp_name
   webapp_name = local.webapp_name
+  image_repository   = var.cosmotechwebapp_image_repository
   image_tag   = var.cosmotechwebapp_image_tag
 
   cluster_domain        = local.cluster_domain

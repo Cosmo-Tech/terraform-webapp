@@ -33,7 +33,7 @@ webapp:
   functions:
     image:
       pullPolicy: "Always"
-      repository: "ghcr.io/cosmo-tech/azure-sample-webapp/webapp-functions"
+      repository: "${IMAGE_REPOSITORY}/webapp-functions"
       # Update this tag with each release --> https://github.com/Cosmo-Tech/azure-sample-webapp/pkgs/container/azure-sample-webapp%2Fwebapp-server/674832208?tag=v7.0.0-rc1-vanilla
       tag: "${IMAGE_TAG}"
     # Tolerations for hybrid deployment (cloud + on-premises):
@@ -49,7 +49,7 @@ webapp:
   server:
     image:
       pullPolicy: Always
-      repository: "ghcr.io/cosmo-tech/azure-sample-webapp/webapp-server"
+      repository: "${IMAGE_REPOSITORY}/webapp-server"
       # Update this tag with each release --> https://github.com/Cosmo-Tech/azure-sample-webapp/pkgs/container/azure-sample-webapp%2Fwebapp-server/674832208?tag=v7.0.0-rc1-vanilla
       tag: "${IMAGE_TAG}"
     tolerations:

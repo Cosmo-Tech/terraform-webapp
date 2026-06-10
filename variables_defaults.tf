@@ -10,5 +10,6 @@ variable "image_registry_auth_secret" { default = "registry-auth-cgrdev" }
 variable "cosmotechwebapp_chart_name" { default = "cosmotech-business-webapp" }
 variable "cosmotechwebapp_chart_repository" { default = "https://cosmo-tech.github.io/helm-charts" }
 variable "cosmotechwebapp_chart_tag" { default = "0.3.0" }
+variable "cosmotechwebapp_image_repository" { default = "ghcr.io/cosmo-tech/azure-sample-webapp" }
 variable "cosmotechwebapp_image_tag" { default = "v7.0.3-vanilla" }
 
