@@ -13,7 +13,10 @@ locals {
     POWERBI_APP_TENANT_ID       = var.azure_entra_tenant_id
     POWERBI_APP_CLIENT_ID       = local.webapp_powerbi_app_client_id
     POWERBI_APP_SECRET          = local.webapp_powerbi_app_secret
-    IMAGE_TAG                   = var.image_tag
+    IMAGE_REPOSITORY_SERVER     = var.image_repository_server
+    IMAGE_TAG_SERVER            = var.image_tag_server
+    IMAGE_REPOSITORY_FUNCTIONS  = var.image_repository_functions
+    IMAGE_TAG_FUNCTIONS         = var.image_tag_functions
   }
 }
 

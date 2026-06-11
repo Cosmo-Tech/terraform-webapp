@@ -22,7 +22,19 @@ variable "webapp_name" {
   type = string
 }
 
-variable "image_tag" {
+variable "image_repository_server" {
+  type = string
+}
+
+variable "image_tag_server" {
+  type = string
+}
+
+variable "image_repository_functions" {
+  type = string
+}
+
+variable "image_tag_functions" {
   type = string
 }
 
