@@ -11,8 +11,9 @@ module "deploy-powerbi-app" {
 
   count = var.powerbi_app_deploy ? 1 : 0
 
-  tenant      = local.tenant
-  webapp_name = local.webapp_name
+  cluster_name = var.cluster_name
+  tenant       = local.tenant
+  webapp_name  = local.webapp_name
 }
 
 
