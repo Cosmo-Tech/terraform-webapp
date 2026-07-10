@@ -15,8 +15,10 @@ locals {
     POWERBI_APP_SECRET          = local.webapp_powerbi_app_secret
     IMAGE_REPOSITORY_SERVER     = var.image_repository_server
     IMAGE_TAG_SERVER            = var.image_tag_server
+    IMAGE_PULL_SECRET_SERVER    = var.image_pull_secret_server
     IMAGE_REPOSITORY_FUNCTIONS  = var.image_repository_functions
     IMAGE_TAG_FUNCTIONS         = var.image_tag_functions
+    IMAGE_PULL_SECRET_FUNCTIONS = var.image_pull_secret_functions
   }
 }
 

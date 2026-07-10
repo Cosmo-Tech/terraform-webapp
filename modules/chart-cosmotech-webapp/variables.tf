@@ -30,11 +30,19 @@ variable "image_tag_server" {
   type = string
 }
 
+variable "image_pull_secret_server" {
+  type = string
+}
+
 variable "image_repository_functions" {
   type = string
 }
 
 variable "image_tag_functions" {
+  type = string
+}
+
+variable "image_pull_secret_functions" {
   type = string
 }
 
