@@ -1,6 +1,10 @@
+locals {
+  client_name = "${var.webapp_name}-powerbi-client"
+}
+
 # Application powerbi
 resource "azuread_application" "powerbi" {
-  display_name     = "PowerBI App registrations For ${var.webapp_name}"
+  display_name     = "${var.cluster_name}-${var.tenant}-${local.client_name}"
   sign_in_audience = "AzureADMyOrg"
 }
 
@@ -17,7 +21,7 @@ resource "azuread_application_password" "powerbi_password" {
 
 resource "kubernetes_secret" "powerbi" {
   metadata {
-    name      = "${var.webapp_name}-powerbi-client"
+    name      = local.client_name
     namespace = var.tenant
   }
   data = {

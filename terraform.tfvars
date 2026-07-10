@@ -22,7 +22,10 @@
 
 
 ## Global
-# cosmotechwebapp_image_repository_server    = "repo_url" # This variable has a default value from variables_defaults.tf, but easier to customize with a copy/paste from here
-# cosmotechwebapp_image_tag_server           = "tag_name" # This variable has a default value from variables_defaults.tf, but easier to customize with a copy/paste from here
-# cosmotechwebapp_image_repository_functions = "repo_url" # This variable has a default value from variables_defaults.tf, but easier to customize with a copy/paste from here
-# cosmotechwebapp_image_tag_functions        = "tag_name" # This variable has a default value from variables_defaults.tf, but easier to customize with a copy/paste from here
+# cosmotechwebapp_image_repository_server     = "repo_url" # This variable has a default value from variables_defaults.tf, but easier to customize with a copy/paste from here
+# cosmotechwebapp_image_tag_server            = "tag_name" # This variable has a default value from variables_defaults.tf, but easier to customize with a copy/paste from here
+# cosmotechwebapp_image_pull_secret_functions = "secret_name" # This variable has a default value from variables_defaults.tf, but easier to customize with a copy/paste from here
+
+# cosmotechwebapp_image_repository_functions  = "repo_url" # This variable has a default value from variables_defaults.tf, but easier to customize with a copy/paste from here
+# cosmotechwebapp_image_tag_functions         = "tag_name" # This variable has a default value from variables_defaults.tf, but easier to customize with a copy/paste from here
+# cosmotechwebapp_image_pull_secret_server    = "secret_name" # This variable has a default value from variables_defaults.tf, but easier to customize with a copy/paste from here
