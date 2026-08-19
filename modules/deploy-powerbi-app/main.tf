@@ -19,6 +19,17 @@ resource "azuread_application_password" "powerbi_password" {
   application_id = azuread_application.powerbi.id
 }
 
+# Existing "PowerBI" Azure AD group
+data "azuread_group" "powerbi" {
+  display_name     = "PowerBI"
+  security_enabled = true
+}
+
+resource "azuread_group_member" "powerbi" {
+  group_object_id  = data.azuread_group.powerbi.object_id
+  member_object_id = azuread_service_principal.powerbi.object_id
+}
+
 resource "kubernetes_secret" "powerbi" {
   metadata {
     name      = local.client_name
