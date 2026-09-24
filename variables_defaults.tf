@@ -2,20 +2,19 @@
 
 
 # Registry
-variable "image_registry" { default = "cgr.dev" }
-variable "image_registry_auth_secret" { default = "registry-auth-cgrdev" }
-
+variable "registry" { default = "registry.cosmotech.com" }
+variable "chart_prefix_product" { default = "product-charts/" }
+variable "image_prefix_product" { default = "product/" }
 
 # Cosmo Tech Webapp
-variable "cosmotechwebapp_chart_name" { default = "cosmotech-business-webapp" }
-variable "cosmotechwebapp_chart_repository" { default = "https://cosmo-tech.github.io/helm-charts" }
-variable "cosmotechwebapp_chart_tag" { default = "0.3.0" }
+variable "cosmotech_business_webapp_chart_name" { default = "cosmotech-business-webapp" }
+variable "cosmotech_business_webapp_chart_tag" { default = "0.3.0" }
 
-variable "cosmotechwebapp_image_repository_server" { default = "ghcr.io/cosmo-tech/azure-sample-webapp/webapp-server" }
-variable "cosmotechwebapp_image_tag_server" { default = "v7.2.0-vanilla" }
-variable "cosmotechwebapp_image_pull_secret_server" { default = "" }
+variable "cosmotech_business_webapp_image_repository_server" { default = "cosmotech-business-webapp-server" }
+variable "cosmotech_business_webapp_image_tag_server" { default = "v7.4.0-vanilla" }
+variable "cosmotech_business_webapp_image_pull_secret_server" { default = "registry-auth-cosmotech" }
 
-variable "cosmotechwebapp_image_repository_functions" { default = "ghcr.io/cosmo-tech/azure-sample-webapp/webapp-functions" }
-variable "cosmotechwebapp_image_tag_functions" { default = "v7.2.0-vanilla" }
-variable "cosmotechwebapp_image_pull_secret_functions" { default = "" }
+variable "cosmotech_business_webapp_image_repository_functions" { default = "cosmotech-business-webapp-functions" }
+variable "cosmotech_business_webapp_image_tag_functions" { default = "v7.4.0-vanilla" }
+variable "cosmotech_business_webapp_image_pull_secret_functions" { default = "registry-auth-cosmotech" }
 

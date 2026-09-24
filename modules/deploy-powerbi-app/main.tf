@@ -17,6 +17,7 @@ resource "azuread_service_principal" "powerbi" {
 resource "azuread_application_password" "powerbi_password" {
   display_name   = "powerbi_secret"
   application_id = azuread_application.powerbi.id
+  depends_on     = [azuread_service_principal.powerbi]
 }
 
 # Existing "PowerBI" Azure AD group

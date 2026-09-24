@@ -37,18 +37,18 @@ module "chart-cosmotech-webapp" {
   organization_id       = var.organization_id
   azure_entra_tenant_id = var.azure_entra_tenant_id
 
-  chart_repository = var.cosmotechwebapp_chart_repository
-  chart_name       = var.cosmotechwebapp_chart_name
-  chart_tag        = var.cosmotechwebapp_chart_tag
+  chart_repository = "oci://${var.registry}/${var.chart_prefix_product}"
+  chart_name       = var.cosmotech_business_webapp_chart_name
+  chart_tag        = var.cosmotech_business_webapp_chart_tag
   # chart_release    = local.webapp_name
 
-  image_repository_server  = var.cosmotechwebapp_image_repository_server
-  image_tag_server         = var.cosmotechwebapp_image_tag_server
-  image_pull_secret_server = var.cosmotechwebapp_image_pull_secret_server
+  image_repository_server  = "${var.registry}/${var.image_prefix_product}${var.cosmotech_business_webapp_image_repository_server}"
+  image_tag_server         = var.cosmotech_business_webapp_image_tag_server
+  image_pull_secret_server = var.cosmotech_business_webapp_image_pull_secret_server
 
-  image_repository_functions  = var.cosmotechwebapp_image_repository_functions
-  image_tag_functions         = var.cosmotechwebapp_image_tag_functions
-  image_pull_secret_functions = var.cosmotechwebapp_image_pull_secret_functions
+  image_repository_functions  = "${var.registry}/${var.image_prefix_product}${var.cosmotech_business_webapp_image_repository_functions}"
+  image_tag_functions         = var.cosmotech_business_webapp_image_tag_functions
+  image_pull_secret_functions = var.cosmotech_business_webapp_image_pull_secret_functions
 
   depends_on = [
     module.deploy-powerbi-app
