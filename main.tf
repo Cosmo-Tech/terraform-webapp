@@ -33,6 +33,7 @@ module "chart-cosmotech-webapp" {
 
   tenant                = local.tenant
   webapp_name           = local.webapp_name
+  webapp_type           = var.webapp_type
   cluster_domain        = local.cluster_domain
   organization_id       = var.organization_id
   azure_entra_tenant_id = var.azure_entra_tenant_id

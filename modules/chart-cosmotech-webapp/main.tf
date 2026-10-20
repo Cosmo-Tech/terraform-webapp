@@ -6,6 +6,7 @@ locals {
   chart_values = {
     CLUSTER_DOMAIN              = var.cluster_domain
     WEBAPP_NAME                 = var.webapp_name
+    WEBAPP_TYPE                 = var.webapp_type
     NAMESPACE                   = var.tenant
     ORGANIZATION_ID             = var.organization_id
     SUPERSET_SUPERUSER_PASSWORD = try(data.kubernetes_secret.superset.data["superset-password"], "")
@@ -32,7 +33,7 @@ resource "kubernetes_config_map" "webapp" {
   data = {
     "AssetCopyMapping.json"      = templatefile("${path.module}/AssetCopyMapping.json", local.chart_values)
     "ContentSecurityPolicy.json" = templatefile("${path.module}/ContentSecurityPolicy.json", local.chart_values)
-    "GlobalConfiguration.json"   = templatefile("${path.module}/GlobalConfiguration.json", local.chart_values)
+    "GlobalConfiguration.json"   = templatefile("${path.module}/GlobalConfiguration.json.tftpl", local.chart_values)
   }
 }
 

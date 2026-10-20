@@ -5,7 +5,12 @@
     "AUTH_KEYCLOAK_ROLES_JWT_CLAIM": "userRoles",
     "AZURE_TENANT_ID": "",
     "COSMOTECH_API_SCOPE": "https://${CLUSTER_DOMAIN}/platform",
+%{ if WEBAPP_TYPE == "asset" ~}
+    "RUN_API_URL": "https://${CLUSTER_DOMAIN}/${NAMESPACE}/api",
+    "ADL_API_URL": "https://${CLUSTER_DOMAIN}/${NAMESPACE}/asset",
+%{ else ~}
     "DEFAULT_BASE_PATH": "https://${CLUSTER_DOMAIN}/${NAMESPACE}/api",
+%{ endif ~}
     "ORGANIZATION_ID": "${ORGANIZATION_ID}",
     "PUBLIC_URL": "/${NAMESPACE}/${WEBAPP_NAME}",
     "WORKSPACES_IDS_FILTER": null
