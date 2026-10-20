@@ -13,6 +13,17 @@ variable "webapp_name" {
   type        = string
 }
 
+variable "webapp_type" {
+  description = "Webapp type: 'generic' (DEFAULT_BASE_PATH) or 'asset' (RUN_API_URL + ADL_API_URL)"
+  type        = string
+  default     = "generic"
+
+  validation {
+    condition     = contains(["generic", "asset"], var.webapp_type)
+    error_message = "webapp_type must be either 'generic' or 'asset'"
+  }
+}
+
 variable "domain_zone" {
   description = "Domain zone (e.g. 'azure.platform.cosmotech.com' for AKS or 'onpremise.platform.cosmotech.com' for KOB)"
   type        = string

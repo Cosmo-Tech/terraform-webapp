@@ -1,6 +1,6 @@
 {
     "connect-src": [
-        "*.${CLUSTER_DOMAIN}",
+        "https://superset-${CLUSTER_DOMAIN}",
         "https://${CLUSTER_DOMAIN}"
     ],
     "frame-src": [
