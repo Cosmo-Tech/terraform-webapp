@@ -11,9 +11,9 @@ variable "cosmotech_business_webapp_chart_name" { default = "cosmotech-business-
 variable "cosmotech_business_webapp_chart_tag" { default = "0.3.0" }
 
 variable "cosmotech_business_webapp_image_repository_server" { default = "cosmotech-business-webapp-server" }
-variable "cosmotech_business_webapp_image_tag_server" { default = "v7.5.0-vanilla" }
+variable "cosmotech_business_webapp_image_tag_server" { default = "v7.6.1-vanilla" }
 variable "cosmotech_business_webapp_image_pull_secret_server" { default = "registry-auth-cosmotech" }
 
 variable "cosmotech_business_webapp_image_repository_functions" { default = "cosmotech-business-webapp-functions" }
-variable "cosmotech_business_webapp_image_tag_functions" { default = "v7.5.0-vanilla" }
+variable "cosmotech_business_webapp_image_tag_functions" { default = "v7.6.1-vanilla" }
 variable "cosmotech_business_webapp_image_pull_secret_functions" { default = "registry-auth-cosmotech" }
