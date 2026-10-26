@@ -22,6 +22,17 @@ variable "webapp_name" {
   type = string
 }
 
+variable "webapp_type" {
+  description = "Type of webapp: 'generic' or 'asset' (drives GlobalConfiguration.json content)"
+  type        = string
+  default     = "generic"
+
+  validation {
+    condition     = contains(["generic", "asset"], var.webapp_type)
+    error_message = "webapp_type must be either 'generic' or 'asset'."
+  }
+}
+
 variable "image_repository_server" {
   type = string
 }
