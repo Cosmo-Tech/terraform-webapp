@@ -22,6 +22,7 @@
 
 
 ## Global
+# webapp_type           = "generic" # "generic" or "asset"
 # cosmotech_business_webapp_image_repository_server     = "repo_url" # This variable has a default value from variables_defaults.tf, but easier to customize with a copy/paste from here
 # cosmotech_business_webapp_image_tag_server            = "tag_name" # This variable has a default value from variables_defaults.tf, but easier to customize with a copy/paste from here
 # cosmotech_business_webapp_image_pull_secret_server    = "secret_name" # This variable has a default value from variables_defaults.tf, but easier to customize with a copy/paste from here
